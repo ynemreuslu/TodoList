@@ -1,6 +1,6 @@
 package com.example.todolistapp.fragment
 
-import android.graphics.Color
+
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -31,8 +31,7 @@ class NoteFragment : Fragment() {
     private lateinit var noteList: List<NoteModel>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_note, container, false)
         observeNoteList()
@@ -82,9 +81,7 @@ class NoteFragment : Fragment() {
 
     private fun showNoNotesSnackbar() {
         val snackbar = Snackbar.make(
-            requireView(),
-            getString(R.string.no_not),
-            Snackbar.LENGTH_SHORT
+            requireView(), getString(R.string.no_not), Snackbar.LENGTH_SHORT
         )
         snackbar.setBackgroundTint(
             ContextCompat.getColor(requireContext(), R.color.orange)
@@ -108,9 +105,14 @@ class NoteFragment : Fragment() {
         binding.searchView.setupWithSearchBar(binding.searchBar)
 
         binding.searchView.editText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(
+                charSequence: CharSequence?, start: Int, before: Int, count: Int
+            ) {
+            }
 
-            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+            override fun onTextChanged(
+                charSequence: CharSequence?, start: Int, before: Int, count: Int
+            ) {
                 performSearch(charSequence.toString())
             }
 
@@ -136,8 +138,10 @@ class NoteFragment : Fragment() {
 
     private fun performSearch(query: String) {
         val filteredList = noteList.filter { noteItem ->
-            noteItem.note.contains(query, ignoreCase = true) ||
-                    noteItem.title.contains(query, ignoreCase = true)
+            noteItem.note.contains(query, ignoreCase = true) || noteItem.title.contains(
+                query,
+                ignoreCase = true
+            )
         }
         adapter.updateList(filteredList)
     }

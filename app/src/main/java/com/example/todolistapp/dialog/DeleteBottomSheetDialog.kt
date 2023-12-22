@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todolistapp.R
 import com.example.todolistapp.databinding.DeleteBottomSheetBinding
-
 import com.example.todolistapp.vm.NoteViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +19,7 @@ class DeleteBottomSheetDialog : BottomSheetDialogFragment() {
     val args: DeleteBottomSheetDialogArgs by navArgs<DeleteBottomSheetDialogArgs>()
     val viewModel: NoteViewModel by viewModels()
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {

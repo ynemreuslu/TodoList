@@ -23,7 +23,7 @@ class NoteViewModel @Inject constructor(
 
     private fun getNoteAll() {
         viewModelScope.launch {
-            noteList.postValue( noteRepository.getNoteAll())
+            noteList.postValue(noteRepository.getNoteAll())
         }
     }
 
@@ -34,7 +34,7 @@ class NoteViewModel @Inject constructor(
         }
     }
 
-    fun deleteNote(id : Int) {
+    fun deleteNote(id: Int) {
         viewModelScope.launch {
             noteRepository.deleteNote(id)
         }

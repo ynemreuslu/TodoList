@@ -13,7 +13,9 @@ import com.example.todolistapp.room.NoteModel
 class NoteAdapter(private var noteList: List<NoteModel>) :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    class NoteViewHolder(private val itemBinding: NoteItemBinding) : ViewHolder(itemBinding.root) {
+    class NoteViewHolder(private val itemBinding: NoteItemBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
+
         fun bind(model: NoteModel) {
             itemBinding.note = model
             itemBinding.noteCardView.setOnClickListener {
