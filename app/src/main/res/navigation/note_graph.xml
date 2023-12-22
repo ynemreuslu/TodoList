@@ -48,7 +48,7 @@
     </fragment>
     <dialog
         android:id="@+id/deleteBottomSheetDiolog"
-        android:name="com.example.todolistapp.DeleteBottomSheetDialog"
+        android:name="com.example.todolistapp.dialog.DeleteBottomSheetDialog"
         android:label="DeleteBottomSheetDiolog" >
         <action
             android:id="@+id/action_deleteBottomSheetDiolog_to_noteFragment"

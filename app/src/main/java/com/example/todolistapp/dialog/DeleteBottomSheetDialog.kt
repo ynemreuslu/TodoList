@@ -1,15 +1,15 @@
-package com.example.todolistapp
+package com.example.todolistapp.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.todolistapp.R
 import com.example.todolistapp.databinding.DeleteBottomSheetBinding
-import com.example.todolistapp.fragment.UpdateFragmentDirections
+
 import com.example.todolistapp.vm.NoteViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,26 +21,36 @@ class DeleteBottomSheetDialog : BottomSheetDialogFragment() {
     val viewModel: NoteViewModel by viewModels()
     private val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = DeleteBottomSheetBinding.inflate(inflater, container, false)
         val view = binding.root
-        val id = args.noteId.id
-        Toast.makeText(requireContext(),"${id}",Toast.LENGTH_LONG).show()
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupButtonClickListeners()
+    }
+
+    private fun setupButtonClickListeners() {
         binding.yesButton.setOnClickListener {
-            viewModel.deleteNote(id)
-            findNavController().navigate(R.id.action_deleteBottomSheetDiolog_to_noteFragment)
-
-
+            handleYesButtonClick()
         }
 
         binding.noButton.setOnClickListener {
-            findNavController().popBackStack()
+            handleNoButtonClick()
         }
+    }
 
-        return view
+    private fun handleYesButtonClick() {
+        val id = args.noteId.id
+        viewModel.deleteNote(id)
+        findNavController().navigate(R.id.action_deleteBottomSheetDiolog_to_noteFragment)
+    }
+
+    private fun handleNoButtonClick() {
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {
