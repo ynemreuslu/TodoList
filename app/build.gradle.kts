@@ -78,6 +78,10 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
+    // Splash Activity
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation ("androidx.core:core-splashscreen:1.1.0-alpha02")
 }
 
 kapt {

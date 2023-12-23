@@ -6,16 +6,17 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/notes"
         android:name=".di.NoteApplication"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/notes"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TodoListApp"
+        android:theme="@style/Theme.AppCompat.TodoList"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.AppCompat.TodoList"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

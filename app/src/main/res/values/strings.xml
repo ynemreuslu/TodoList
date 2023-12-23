@@ -2,9 +2,9 @@
     <string name="app_name">TodoList App</string>
     <string name="start_writing">Yazmaya başla</string>
     <string name="enter_title">Başlık</string>
-    <string name="no_not">Not Bulunamadı</string>
     <string name="search">Not Ara</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="note_delete">Notu silmek istediğinizden emin misiniz ? </string>
+    <string name="no_not">Henüz not bulunamadı</string>
 </resources>

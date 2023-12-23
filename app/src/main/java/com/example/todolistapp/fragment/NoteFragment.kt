@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,7 +18,6 @@ import com.example.todolistapp.databinding.FragmentNoteBinding
 import com.example.todolistapp.room.NoteModel
 import com.example.todolistapp.vm.NoteViewModel
 import com.google.android.material.search.SearchView
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -71,26 +69,19 @@ class NoteFragment : Fragment() {
             noteList = it
             binding.apply {
                 if (noteList.isEmpty()) {
-                    showNoNotesSnackbar()
+                   binding.noteFragmentNoNotesImageView.visibility = View.VISIBLE
+                    binding.noteFragmentNoNotesTextView.visibility = View.VISIBLE
+                    binding.noteFragmentNoNotesConstraintLayout.visibility = View.VISIBLE
                 } else {
+                    binding.noteFragmentNoNotesImageView.visibility = View.GONE
+                    binding.noteFragmentNoNotesTextView.visibility = View.GONE
+                    binding.noteFragmentNoNotesConstraintLayout.visibility = View.GONE
                     setUpRecyclerView()
                 }
             }
         }
     }
 
-    private fun showNoNotesSnackbar() {
-        val snackbar = Snackbar.make(
-            requireView(), getString(R.string.no_not), Snackbar.LENGTH_SHORT
-        )
-        snackbar.setBackgroundTint(
-            ContextCompat.getColor(requireContext(), R.color.orange)
-        )
-        snackbar.setTextColor(
-            ContextCompat.getColor(requireContext(), R.color.white)
-        )
-        snackbar.show()
-    }
 
     private fun navigateToAddFragment() {
         findNavController().navigate(R.id.action_noteFragment_to_addFragment)

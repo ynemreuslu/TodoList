@@ -56,6 +56,7 @@
                             android:background="#BAB7B6"
                             android:hint="@string/search"
                             app:backgroundTint="#BAB7B6" />
+
                     </com.google.android.material.appbar.AppBarLayout>
 
                     <com.google.android.material.search.SearchView
@@ -76,6 +77,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adapter="@{adapter}" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/noteFragmentNoNotesConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="415dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/noteFragmentNoNotesImageView"
+                        android:layout_width="316dp"
+                        android:layout_height="49dp"
+                        android:layout_marginTop="278dp"
+                        android:layout_marginBottom="13dp"
+                        android:background="#FFFFFF"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/noteFragmentNoNotesTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_edit_note_24" />
+
+                    <TextView
+                        android:id="@+id/noteFragmentNoNotesTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="54dp"
+                        android:gravity="center"
+                        android:text="@string/no_not"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="#B3AEAE"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/noteFragmentNoNotesImageView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

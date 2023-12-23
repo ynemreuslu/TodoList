@@ -6,12 +6,13 @@
     </style>
 
 
-    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <!-- Customize other attributes as needed -->
-        <item name="queryBackground">@android:color/white</item>
-        <item name="submitBackground">@android:color/white</item>
-        <item name="searchIcon">@android:color/white</item>
+    <style name="Theme.AppCompat.TodoList" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/notes</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.TodoListApp</item>
     </style>
+
 
     <style name="Theme.TodoListApp" parent="Base.Theme.TodoListApp" />
 </resources>
