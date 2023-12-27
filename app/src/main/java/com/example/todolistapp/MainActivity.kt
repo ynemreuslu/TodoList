@@ -1,7 +1,7 @@
 package com.example.todolistapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -11,7 +11,5 @@ class MainActivity : AppCompatActivity() {
         val screen = installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
     }
 }

@@ -125,7 +125,7 @@ class AddFragment : Fragment() {
 
     private fun enableForwardButton() {
         binding.addNoteFragmentForwardTextButton.isEnabled = true
-        binding.addNoteFragmentForwardTextButton.setImageResource(R.drawable.shortcut)
+        binding.addNoteFragmentForwardTextButton.setImageResource(R.drawable.redo)
         binding.addNoteFragmentForwardTextButton.setOnClickListener {
             if (textHistory.isNotEmpty()) {
                 val lastText = textHistory.removeAt(textHistory.size - 1)
@@ -136,6 +136,6 @@ class AddFragment : Fragment() {
 
     private fun disableForwardButton() {
         binding.addNoteFragmentForwardTextButton.isEnabled = false
-        binding.addNoteFragmentForwardTextButton.setImageResource(R.drawable.shortcut_gone)
+        binding.addNoteFragmentForwardTextButton.setImageResource(R.drawable.redo_gone)
     }
 }

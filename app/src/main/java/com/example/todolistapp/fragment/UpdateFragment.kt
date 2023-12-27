@@ -67,10 +67,14 @@ class UpdateFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val characterCount = p0?.length ?: 0
                 updateCharacterCount(characterCount)
-                updateButtonVisibility(p0!!.isNotEmpty())
+                val notesCount = args.note.note
+                updateButtonVisibility(notesCount.length < characterCount)
             }
 
-            override fun afterTextChanged(p0: Editable?) {}
+            override fun afterTextChanged(p0: Editable?) {
+                val count = p0!!.length
+                binding.updateNoteFragmentNoteEditText.setSelection(count)
+            }
         })
 
         binding.updateNoteFragmentTitleEditText.addTextChangedListener {
@@ -104,6 +108,10 @@ class UpdateFragment : Fragment() {
         binding.updateNoteFragmentDeleteButton.setOnClickListener {
             navigateToDeleteBottom()
         }
+
+        binding.updateNoteFragmentBackButton.setOnClickListener {
+            navigateToBackButton()
+        }
     }
 
     private fun isEmpty() {
@@ -119,7 +127,7 @@ class UpdateFragment : Fragment() {
         binding.updateFragmentUndoTextButton.setImageResource(R.drawable.undo)
         binding.updateFragmentUndoTextButton.setOnClickListener {
             textHistory.add(binding.updateNoteFragmentNoteEditText.text.toString())
-            binding.updateNoteFragmentNoteEditText.text.clear()
+            binding.updateNoteFragmentNoteEditText.setText(args.note.note)
         }
     }
 
@@ -130,7 +138,7 @@ class UpdateFragment : Fragment() {
 
     private fun enableForwardButton() {
         binding.updateFragmentForwardTextButton.isEnabled = true
-        binding.updateFragmentForwardTextButton.setImageResource(R.drawable.shortcut)
+        binding.updateFragmentForwardTextButton.setImageResource(R.drawable.redo)
         binding.updateFragmentForwardTextButton.setOnClickListener {
             if (textHistory.isNotEmpty()) {
                 val lastText = textHistory.removeAt(textHistory.size - 1)
@@ -141,7 +149,7 @@ class UpdateFragment : Fragment() {
 
     private fun disableForwardButton() {
         binding.updateFragmentForwardTextButton.isEnabled = false
-        binding.updateFragmentForwardTextButton.setImageResource(R.drawable.shortcut_gone)
+        binding.updateFragmentForwardTextButton.setImageResource(R.drawable.redo_gone)
     }
 
     private fun updateNote() {
@@ -154,10 +162,6 @@ class UpdateFragment : Fragment() {
         viewModel.updateNote(note)
     }
 
-    private fun deleteNote() {
-
-        viewModel.deleteNote(args.note.id)
-    }
 
     private fun navigateToNoteFragment() {
         val action = UpdateFragmentDirections.actionUpdateFragmentToNoteFragment()
@@ -167,6 +171,11 @@ class UpdateFragment : Fragment() {
     private fun navigateToDeleteBottom() {
         val action =
             UpdateFragmentDirections.actionUpdateFragmentToDeleteBottomSheetDiolog2(args.note)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToBackButton() {
+        val action = UpdateFragmentDirections.actionUpdateFragmentToNoteFragment()
         findNavController().navigate(action)
     }
 

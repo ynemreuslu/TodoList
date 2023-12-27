@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.todolistapp.databinding.NoteItemBinding
 import com.example.todolistapp.fragment.NoteFragmentDirections
 import com.example.todolistapp.room.NoteModel
