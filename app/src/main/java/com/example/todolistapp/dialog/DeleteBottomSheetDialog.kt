@@ -15,17 +15,16 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DeleteBottomSheetDialog : BottomSheetDialogFragment() {
-    private var _binding: DeleteBottomSheetBinding? = null
-    val args: DeleteBottomSheetDialogArgs by navArgs<DeleteBottomSheetDialogArgs>()
+    private lateinit var binding: DeleteBottomSheetBinding
+    val args: DeleteBottomSheetDialogArgs by navArgs()
     val viewModel: NoteViewModel by viewModels()
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = DeleteBottomSheetBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        binding = DeleteBottomSheetBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,8 +43,7 @@ class DeleteBottomSheetDialog : BottomSheetDialogFragment() {
     }
 
     private fun handleYesButtonClick() {
-        val id = args.noteId.id
-        viewModel.deleteNote(id)
+        viewModel.deleteNote(args.noteId.id)
         findNavController().navigate(R.id.action_deleteBottomSheetDiolog_to_noteFragment)
     }
 
@@ -53,8 +51,5 @@ class DeleteBottomSheetDialog : BottomSheetDialogFragment() {
         findNavController().popBackStack()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }
